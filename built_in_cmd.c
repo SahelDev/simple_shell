@@ -13,7 +13,7 @@ int check_bltin_cmd(char *line, char **ar, char *newline, char **array)
 
 	if (_strcmp(ar[0], "exit") == 0) /* compares first token to exit */
 	{
-		myfree(line, ar, newline, array);
+		_free(line, ar, newline, array);
 		_exit(errno); /* exits with status 0 or errno */
 	}
 	if (_strcmp(ar[0], "env") == 0) /* compares first token to env */

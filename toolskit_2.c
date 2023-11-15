@@ -45,3 +45,25 @@ int _putchar(char c)
 {
 	return (write(2, &c, 1));
 }
+/**
+ * _strcpy - copies str from src to dest
+ * @src: source string
+ * @dest: destination string
+ * Return: pointer to destination string
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+	int len = 0;
+
+	while (*(src + len) != '\0')
+	{
+		len++;
+	}
+
+	for (i = 0; i <= len; i++)
+	{
+		*(dest + i) = *(src + i);
+	}
+	return (dest);
+}

@@ -4,13 +4,21 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <limits.h>
-#include <fcntl.h>
-#include <errno.h>
+#include<string.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+#include<sys/stat.h>
+#include<limits.h>
+#include<fcntl.h>
+#include<errno.h>
+#include<dirent.h>
+#include<stdarg.h>
+
+
+extern char **environ;
+
+
+
 
 /**
  * struct fmt - types of data and their function
@@ -46,6 +54,9 @@ void change_dir(char **ar);
 int shell_batch(char *argv[]);
 int shell_no_batch(char *argv[], int shell_interaction);
 char *read_line(void);
+int _parse(char *line, int num_tokens, char *argv[], int failcount);
+char *_strcpy(char *dest, char *src);
+
 
 /**
  * struct liststr - singly linked list
