@@ -5,6 +5,7 @@
  * @p: directory in PATH to access
  * @tokens: array of tokens to check
  */
+
 void execute_path(char *p, char **tokens)
 {
 	int status, len, len2;

@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _printf - prints strings with formatted variables
  * @format: the string to format and print

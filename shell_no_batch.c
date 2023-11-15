@@ -1,4 +1,5 @@
 #include"shell.h"
+
 /**
  * shell_no_batch -function that handle shell in interactive mode
  * @argv:array of arg

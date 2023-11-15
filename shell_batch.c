@@ -6,6 +6,7 @@
  * @argv : array of args
  * Return: int
  */
+
 int shell_batch(char *argv[])
 {
 	char *line;

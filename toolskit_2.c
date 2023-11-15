@@ -4,7 +4,6 @@
  * _puts - functiont to write strinng to standard out
  * @str: string to write
  */
-
 void _puts(char *str)
 {
 	while (*str  != '\0')
