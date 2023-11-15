@@ -1,7 +1,8 @@
 #include"shell.h"
 /**
  * shell_no_batch -function that handle shell in interactive mode
- * @P1:
+ * @argv:array of arg
+ * @shell_interaction: determine shell mode
  * Return: void
  */
 

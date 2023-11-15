@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	int shell_interaction;
 
 	shell_interaction = isatty(STDIN_FILENO);
+	signal(SIGINT, SIG_IGN);
 
 	if (shell_interaction == 0 && argc == 1)
 	{

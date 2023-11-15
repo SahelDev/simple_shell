@@ -20,5 +20,5 @@ int shell_batch(char *argv[])
 
 	}
 	free(line);
-	return (0);
+	return (errno);
 }
