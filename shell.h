@@ -37,6 +37,7 @@ int _putchar(char c);
 void change_dir(char **ar);
 int shell_batch(char *);
 int shell_no_batch(char *, int);
+char *read_line(void);
 
 
 

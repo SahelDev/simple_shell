@@ -14,14 +14,7 @@ int shell_no_batch(char *argv[], int shell_interaction)
 	{
 		write(1, "($) ", 4);
 		num_tokens = 0; 
-		i = getline(&line, &bufsize, stdin); 
-		if (i < 0)
-		{
-			free(line);
-			write(1, "\n", 1);
-			/* frees, skips line, and repeats for failed input or CTRL - D */
-			break;
-		}
+		line = read_line();
 		num_tokens = num_count(line); /* counts tokens */
 		parse(line, num_tokens, argv, cmdcount);
 		cmdcount++;
