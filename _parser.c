@@ -13,7 +13,7 @@ int _parse(char *line, int num_tokens, char **argv, int cmdcount)
 {
 	int i = 0, bltin, exval = 0;
 	char *p = NULL, *newline = NULL, **array = NULL, **ar = NULL;
-	char *del = " \t\r\n\f\v";
+	char *del = " \t\r\n\f\v\a";
 
 	array = malloc(sizeof(char *) * num_tokens);
 	/* creates array to store tokens */
