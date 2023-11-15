@@ -84,3 +84,52 @@ char *find_in_path(info_t *info, char *pathstr, char *cmd)
     }
     return (NULL);
 }
+
+/**
+ * parse - Parses a line into command and arguments.
+ * @line: The input line.
+ * @num_tokens: Number of tokens in the line.
+ *
+ * Return: A ParseResult struct containing the parsed data.
+ */
+ParseResult parse(char *line, int num_tokens)
+{
+    ParseResult result;
+    result.command = NULL;
+    result.arguments = NULL;
+    result.num_arguments = 0;
+
+    if (num_tokens <= 0) {
+        return result;
+    }
+
+    result.command = strdup(line);
+
+    result.arguments = split_string(line, " ");
+    if (result.arguments != NULL) {
+        result.num_arguments = 0;
+        while (result.arguments[result.num_arguments] != NULL) {
+            result.num_arguments++;
+        }
+    }
+
+    return result;
+}
+
+/**
+ * free_parse_result - Libère la mémoire allouée pour une structure ParseResult.
+ * @result: La structure ParseResult à libérer.
+ */
+void free_parse_result(ParseResult *result)
+{
+    if (result == NULL) {
+        return;
+    }
+
+    free(result->command);
+    free_string_array(result->arguments);
+
+    result->command = NULL;
+    result->arguments = NULL;
+    result->num_arguments = 0;
+}

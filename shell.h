@@ -43,9 +43,22 @@ void _puts(char *str);
 void get_digits(int n);
 int _putchar(char c);
 void change_dir(char **ar);
-int shell_batch(char *);
-int shell_no_batch(char *, int);
+int shell_batch(char *argv[]);
+int shell_no_batch(char *argv[], int shell_interaction);
 char *read_line(void);
+
+/**
+ * struct liststr - singly linked list
+ * @num: the number field
+ * @str: a string
+ * @next: points to the next node
+ */
+typedef struct liststr
+{
+	int num;
+	char *str;
+	struct liststr *next;
+} list_t;
 
 /**
  * struct passinfo - Holds pseudo-arguments to be passed into a function,
@@ -93,7 +106,18 @@ typedef struct passinfo
     int histcount;
 } info_t;
 
-
+/**
+ * struct ParseResult - contains the result of the parse operation
+ * @command: the command string
+ * @arguments: array of arguments
+ * @num_arguments: number of arguments in the array
+ */
+typedef struct ParseResult
+{
+    char *command;
+    char **arguments;
+    int num_arguments;
+} ParseResult;
 
 
 
