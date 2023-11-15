@@ -7,7 +7,7 @@
 
 int shell_no_batch(char *argv[], int shell_interaction)
 {
-	
+
 	int num_tokens = 0, cmdcount = 1;
 	char *line;
 
