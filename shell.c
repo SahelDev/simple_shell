@@ -9,14 +9,17 @@
  */
 int main(int argc, char *argv[])
 {
-	/* determines if file descriptor is associated with a terminal */
-	if (isatty(STDIN_FILENO) == 0 && argc == 1)
+	int shell_interaction;
+
+	shell_interaction = isatty(STDIN_FILENO);
+
+	if (shell_interaction == 0 && argc == 1)
 	{
-		shell_batch();
+		shell_batch(argv);
 	}
 	else
 	{
-		shell_no_batch();
+		shell_no_batch(argv, shell_interaction);
 	}
 	return (0);
 }
