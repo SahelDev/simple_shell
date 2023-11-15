@@ -17,7 +17,7 @@ typedef struct fmt
 char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-int parse_args(char *line, int num_tokens, char *argv[], int failcount);
+
 int exe_(char *line, char **ar, char *nln, char **arry, char **argv, int er);
 void _free(char *line, char **ar, char *newline, char **array);
 int _strncmp(char *s1, char *s2, int len);
@@ -35,8 +35,8 @@ void _puts(char *str);
 void get_digits(int n);
 int _putchar(char c);
 void change_dir(char **ar);
-void shell_batch(void);
-void shell_no_batch(void);
+int shell_batch(char *);
+int shell_no_batch(char *, int);
 
 
 

@@ -5,7 +5,7 @@
  * Return: void
  */
 
-void shell_no_batch(char *argv[], int shell_interaction)
+int shell_no_batch(char *argv[], int shell_interaction)
 {	
 	size_t bufsize = 0;
 	int i, num_tokens = 0, cmdcount = 1;
@@ -28,6 +28,6 @@ void shell_no_batch(char *argv[], int shell_interaction)
 		/* sends line and numtoken to parser - tracks fails*/
 		line = NULL; /* resets line to null */
 	}
-	return;
+	return (0);
 }
 
