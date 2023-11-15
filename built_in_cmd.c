@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * check_bltin_cmd - checks if the command entered is a built-in
  * @line: input entered by user

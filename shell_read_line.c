@@ -4,7 +4,6 @@
  * read_line - reading line from stdin
  * Return: User input
  */
-
 char *read_line(void)
 {
 	char *line = NULL;

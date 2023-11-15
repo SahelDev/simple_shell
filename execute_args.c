@@ -10,7 +10,6 @@
  * @flcnt: number of commands that have failed
  * Return: 0 for success
  */
-
 int exe_(char *line, char **ar, char *nln, char **arry, char **argv, int flcnt)
 {
 	int status, onpath = -1;
