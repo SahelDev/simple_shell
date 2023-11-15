@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * is_executable - détermine si un fichier est une commande exécutable
- * @info: la structure d'informations
- * @path: chemin vers le fichier
+ * is_executable - Determines if a file is an executable command.
+ * @info: The information structure.
+ * @path: Path to the file.
  *
- * Retourne : 1 si vrai, 0 sinon
+ * Returns: 1 if true, 0 otherwise.
  */
 int is_executable(info_t *info, char *path)
 {
@@ -23,12 +23,12 @@ int is_executable(info_t *info, char *path)
 }
 
 /**
- * duplicate_chars - duplique les caractères
- * @pathstr: la chaîne PATH
- * @start: index de départ
- * @stop: index de fin
+ * duplicate_chars - Duplicates characters.
+ * @pathstr: The PATH string.
+ * @start: Starting index.
+ * @stop: Stopping index.
  *
- * Retourne : pointeur vers le nouveau tampon
+ * Returns: Pointer to the new buffer.
  */
 char *duplicate_chars(char *pathstr, int start, int stop)
 {
@@ -43,12 +43,12 @@ char *duplicate_chars(char *pathstr, int start, int stop)
 }
 
 /**
- * find_in_path - cherche la commande dans la chaîne PATH
- * @info: la structure d'informations
- * @pathstr: la chaîne PATH
- * @cmd: la commande à trouver
+ * find_in_path - Finds the command in the PATH string.
+ * @info: The information structure.
+ * @pathstr: The PATH string.
+ * @cmd: The command to find.
  *
- * Retourne : le chemin complet de la commande s'il est trouvé, sinon NULL
+ * Returns: Full path of the command if found, otherwise NULL.
  */
 char *find_in_path(info_t *info, char *pathstr, char *cmd)
 {
