@@ -15,17 +15,17 @@ char **tokenizer(char *input_string, char *delim)
 	char *token = NULL;
 	char *save_ptr = NULL;
 
-	token = _strtok_r(input_string, delim, &save_ptr);
+	token = tokenize_string(input_string, delim, &save_ptr);
 
 	while (token != NULL)
 	{
-		av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
+		av = reallocate_memory(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
 		av[num_delim] = token;
-		token = _strtok_r(NULL, delim, &save_ptr);
+		token = tokenize_string(NULL, delim, &save_ptr);
 		num_delim++;
 	}
 
-	av = _realloc(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
+	av = reallocate_memory(av, sizeof(*av) * num_delim, sizeof(*av) * (num_delim + 1));
 	av[num_delim] = NULL;
 
 	return (av);

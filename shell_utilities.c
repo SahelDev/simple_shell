@@ -15,7 +15,7 @@
  * Return: constant representing the type of the command
  * Description -
  * 		 EXTERNAL_COMMAND (1) represents commands like /bin/ls
- *		 INTERNAL_COMMAND (2) represents commands like exit, env
+ *		 INTERNAL_COMMAND (2) represents commands like exit, print_current_environment
  *		 PATH_COMMAND (3) represents commands found in the PATH like ls
  *		 INVALID_COMMAND (-1) represents invalid commands
  */
@@ -23,7 +23,7 @@
 int parse_command(char *command)
 {
 	int i;
-	char *internal_command[] = {"env", "exit", NULL};
+	char *internal_command[] = {"print_current_environment", "exit", NULL};
 	char *path = NULL;
 
 	for (i = 0; command[i] != '\0'; i++)
@@ -33,7 +33,7 @@ int parse_command(char *command)
 	}
 	for (i = 0; internal_command[i] != NULL; i++)
 	{
-		if (_strcmp(command, internal_command[i]) == 0)
+		if (string_compare(command, internal_command[i]) == 0)
 			return (INTERNAL_COMMAND);
 	}
 	/* @check_path - checks if a command is found in the PATH */
@@ -62,7 +62,7 @@ void execute_command(char **tokenized_command, int command_type)
 	{
 		if (execve(tokenized_command[0], tokenized_command, NULL) == -1)
 		{
-			perror(_getenv("PWD"));
+			perror(_getprint_current_environment("PWD"));
 			exit(2);
 		}
 	}
@@ -70,7 +70,7 @@ void execute_command(char **tokenized_command, int command_type)
 	{
 		if (execve(check_path(tokenized_command[0]), tokenized_command, NULL) == -1)
 		{
-			perror(_getenv("PWD"));
+			perror(_getprint_current_environment("PWD"));
 			exit(2);
 		}
 	}
@@ -99,7 +99,7 @@ char *check_path(char *command)
 {
 	char **path_array = NULL;
 	char *temp, *temp2, *path_cpy;
-	char *path = _getenv("PATH");
+	char *path = _getprint_current_environment("PATH");
 	int i;
 
 	if (path == NULL || _strlen(path) == 0)
@@ -109,8 +109,8 @@ char *check_path(char *command)
 	path_array = tokenizer(path_cpy, ":");
 	for (i = 0; path_array[i] != NULL; i++)
 	{
-		temp2 = _strcat(path_array[i], "/");
-		temp = _strcat(temp2, command);
+		temp2 = string_concat(path_array[i], "/");
+		temp = string_concat(temp2, command);
 		if (access(temp, F_OK) == 0)
 		{
 			free(temp2);
@@ -136,32 +136,32 @@ void (*get_func(char *command))(char **)
 {
 	int i;
 	function_map mapping[] = {
-		{"env", env}, {"exit", quit}
+		{"print_current_environment", print_current_environment}, {"exit", exit_shell}
 	};
 
 	for (i = 0; i < 2; i++)
 	{
-		if (_strcmp(command, mapping[i].command_name) == 0)
+		if (string_compare(command, mapping[i].command_name) == 0)
 			return (mapping[i].func);
 	}
 	return (NULL);
 }
 
 /**
- * _getenv - gets the value of an environment variable
- * @name: name of the environment variable
+ * _getprint_current_environment - gets the value of an print_current_environmentironment variable
+ * @name: name of the print_current_environmentironment variable
  *
  * Return: the value of the variable as a string
  */
-char *_getenv(char *name)
+char *_getprint_current_environment(char *name)
 {
-	char **my_environ;
+	char **my_print_current_environmentiron;
 	char *pair_ptr;
 	char *name_cpy;
 
-	for (my_environ = environ; *my_environ != NULL; my_environ++)
+	for (my_print_current_environmentiron = print_current_environmentiron; *my_print_current_environmentiron != NULL; my_print_current_environmentiron++)
 	{
-		for (pair_ptr = *my_environ, name_cpy = name;
+		for (pair_ptr = *my_print_current_environmentiron, name_cpy = name;
 		     *pair_ptr == *name_cpy; pair_ptr++, name_cpy++)
 		{
 			if (*pair_ptr == '=')

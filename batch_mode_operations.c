@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * non_interactive - handles non_interactive mode
+ * handle_handle_non_interactive_mode_mode - Handles non-interactive mode
  *
- * Return: void
+ * Return: Void
  */
 
-void non_interactive(void)
+void handle_non_interactive_mode(void)
 {
 	char **current_command = NULL;
 	int i, type_command = 0;
@@ -17,7 +17,7 @@ void non_interactive(void)
 		while (getline(&line, &n, stdin) != -1)
 		{
 			remove_newline(line);
-			remove_comment(line);
+			ignore_comment(line);
 			commands = tokenizer(line, ";");
 			for (i = 0; commands[i] != NULL; i++)
 			{

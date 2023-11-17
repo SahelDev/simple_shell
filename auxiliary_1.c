@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- *_strcmp - compare two strings
- *@first: first string to be compared
- *@second: second string to be compared
+ * string_compare - Compares two strings
+ * @str1: First string to be compared
+ * @str2: Second string to be compared
  *
- * Return: difference of the two strings
+ * Return: Difference between the two strings
  */
 
-int _strcmp(char *first, char *second)
+int string_compare(char *first, char *second)
 {
 	int i = 0;
 
@@ -22,14 +22,14 @@ int _strcmp(char *first, char *second)
 }
 
 /**
- *_strcat - concatenates two strings
- *@destination: string to be concatenated to
- *@source:  string to concatenate
+ * string_concat - Concatenates two strings
+ * @dest: String to concatenate to
+ * @src: String to be concatenated
  *
- * Return: address of the new string
+ * Return: Pointer to the resulting concatenated string
  */
 
-char *_strcat(char *destination, char *source)
+char *string_concat(char *destination, char *source)
 {
 	char *new_string =  NULL;
 	int len_dest = _strlen(destination);
@@ -57,7 +57,7 @@ int _strspn(char *str1, char *str2)
 
 	while (str1[i] != '\0')
 	{
-		if (_strchr(str2, str1[i]) == NULL)
+		if (find_character(str2, str1[i]) == NULL)
 			break;
 		match++;
 		i++;
@@ -66,48 +66,36 @@ int _strspn(char *str1, char *str2)
 }
 
 /**
- *_strcspn - computes segment of str1 which consists of characters not in str2
- *@str1: string to be searched
- *@str2: string to be used
+ * prefix_substring_length - Gets the length of a prefix substring
+ * @str: String to be searched
+ * @prefix: Substring to search for as a prefix
  *
- *Return: index at which a char in str1 exists in str2
+ * Return: Number of bytes in the initial segment of 'str' which form 'prefix'
  */
 
 
-int _strcspn(char *str1, char *str2)
+int prefix_substring_length(char *str1, char *str2)
 {
 	int len = 0, i;
 
 	for (i = 0; str1[i] != '\0'; i++)
 	{
-		if (_strchr(str2, str1[i]) != NULL)
+		if (find_character(str2, str1[i]) != NULL)
 			break;
 		len++;
 	}
 	return (len);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
- *_strchr - locates a char in a string
- *@s: string to be searched
- *@c: char to be checked
+ * find_character - Locates a character in a string
+ * @str: String to be searched
+ * @ch: Character to be located
  *
- *Return: pointer to the first occurence of c in s
+ * Return: Pointer to the first occurrence of 'ch' in 'str'
  */
 
-char *_strchr(char *s, char c)
+char *find_character(char *s, char c)
 {
 	int i = 0;
 

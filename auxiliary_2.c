@@ -2,14 +2,14 @@
 
 
 /**
- *_strtok_r - tokenizes a string
- *@string: string to be tokenized
- *@delim: delimiter to be used to tokenize the string
- *@save_ptr: pointer to be used to keep track of the next token
+ * tokenize_string - Splits a string into tokens
+ * @input: String to be tokenized
+ * @delimiter: Delimiter used to tokenize the string
+ * @save_pointer: Pointer to keep track of the next token
  *
- *Return: The next available token
+ * Return: The next available token
  */
-char *_strtok_r(char *string, char *delim, char **save_ptr)
+char *tokenize_string(char *string, char *delim, char **save_ptr)
 {
 	char *finish;
 
@@ -29,7 +29,7 @@ char *_strtok_r(char *string, char *delim, char **save_ptr)
 		return (NULL);
 	}
 
-	finish = string + _strcspn(string, delim);
+	finish = string + prefix_substring_length(string, delim);
 	if (*finish == '\0')
 	{
 		*save_ptr = finish;
@@ -42,12 +42,12 @@ char *_strtok_r(char *string, char *delim, char **save_ptr)
 }
 
 /**
- * _atoi - changes a string to an integer
- * @s: the string to be changed
+ * string_to_integer - Converts a string to an integer
+ * @str: The string to be converted
  *
- * Return: the converted int
+ * Return: The converted integer
  */
-int _atoi(char *s)
+int string_to_integer(char *s)
 {
 	unsigned int n = 0;
 
@@ -65,14 +65,14 @@ int _atoi(char *s)
 }
 
 /**
- * _realloc - reallocates a memory block
- * @ptr: pointer to the memory previously allocated with a call to malloc
- * @old_size: size of ptr
- * @new_size: size of the new memory to be allocated
+ * reallocate_memory - Reallocates a memory block
+ * @ptr: Pointer to the memory previously allocated with malloc
+ * @old_size: Size of ptr
+ * @new_size: Size of the new memory to be allocated
  *
- * Return: pointer to the address of the new memory block
+ * Return: Pointer to the address of the new memory block
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *reallocate_memory(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *temp_block;
 	unsigned int i;
@@ -106,24 +106,25 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * ctrl_c_handler - handles the signal raised by CTRL-C
- * @signum: signal number
+ * handle_ctrl_c - Handles the SIGINT signal (CTRL-C)
+ * @signal_number: Signal number
  *
- * Return: void
+ * Return: Void
  */
-void ctrl_c_handler(int signum)
+void handle_ctrl_c(int signum)
 {
 	if (signum == SIGINT)
 		print("\n($) ", STDIN_FILENO);
 }
 
 /**
- * remove_comment - removes/ignores everything after a '#' char
- * @input: input to be used
+ * ignore_comment - Ignores content after a '#' character
+ * @input: Input string to be processed
  *
- * Return: void
+ * Return: Void
  */
-void remove_comment(char *input)
+
+void ignore_comment(char *input)
 {
 	int i = 0;
 
