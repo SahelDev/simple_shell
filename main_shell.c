@@ -24,11 +24,11 @@ int main(int argc __attribute__((unused)), char **argv)
 	int i, type_command = 0;
 	size_t n = 0;
 
-	signal(SIGINT, handle_ctrl_c);
+	signal(SIGINT, ctrl_c_handler);
 	shell_name = argv[0];
 	while (1)
 	{
-		handle_non_interactive_mode();
+		non_interactive();
 		print(" ($) ", STDOUT_FILENO);
 		if (getline(&line, &n, stdin) == -1)
 		{
@@ -36,7 +36,7 @@ int main(int argc __attribute__((unused)), char **argv)
 			exit(status);
 		}
 			remove_newline(line);
-			ignore_comment(line);
+			remove_comment(line);
 			commands = tokenizer(line, ";");
 
 		for (i = 0; commands[i] != NULL; i++)

@@ -34,7 +34,7 @@ typedef struct map
 	void (*func)(char **command);
 } function_map;
 
-extern char **print_current_environmentiron;
+extern char **environ;
 extern char *line;
 extern char **commands;
 extern char *shell_name;
@@ -48,32 +48,32 @@ int _strlen(char *);
 void _strcpy(char *, char *);
 
 /*helpers2*/
-int string_compare(char *, char *);
-char *string_concat(char *, char *);
+int _strcmp(char *, char *);
+char *_strcat(char *, char *);
 int _strspn(char *, char *);
-int prefix_substring_length(char *, char *);
-char *find_character(char *, char);
+int _strcspn(char *, char *);
+char *_strchr(char *, char);
 
 /*helpers3*/
-char *tokenize_string(char *, char *, char **);
-int string_to_integer(char *);
-void *reallocate_memory(void *ptr, unsigned int old_size, unsigned int new_size);
-void handle_ctrl_c(int);
-void ignore_comment(char *);
+char *_strtok_r(char *, char *, char **);
+int _atoi(char *);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void ctrl_c_handler(int);
+void remove_comment(char *);
 
 /*utils*/
 int parse_command(char *);
 void execute_command(char **, int);
 char *check_path(char *);
 void (*get_func(char *))(char **);
-char *_getprint_current_environment(char *);
+char *_getenv(char *);
 
 /*built_in*/
-void print_current_environment(char **);
-void exit_shell(char **);
+void env(char **);
+void quit(char **);
 
 /*main*/
-extern void handle_non_interactive_mode(void);
+extern void non_interactive(void);
 extern void initializer(char **current_command, int type_command);
 
 #endif /*SHELL_H*/
