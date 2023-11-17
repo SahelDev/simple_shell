@@ -1,31 +1,31 @@
 #include "shell.h"
 
 /**
- * print_current_print_current_environmentironment - Prints the current print_current_environmentironment
- * @command: Command entered (if needed)
+ *env - prints the current_environnement
+ *@tokenized_command: command entered
  *
- * Return: Void
+ *Return: void
  */
 
-void print_current_environment(char **tokenized_command __attribute__((unused)))
+void env(char **tokenized_command __attribute__((unused)))
 {
 	int i;
 
-	for (i = 0; print_current_environmentiron[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		print(print_current_environmentiron[i], STDOUT_FILENO);
+		print(environ[i], STDOUT_FILENO);
 		print("\n", STDOUT_FILENO);
 	}
 }
 
 /**
- * exit_shell - Exits the shell
- * @command: Command entered
+ * quit - exits the shell
+ * @tokenized_command: command entered
  *
- * Return: Void
+ * Return: void
  */
 
-void exit_shell(char **tokenized_command)
+void quit(char **tokenized_command)
 {
 	int num_token = 0, arg;
 
@@ -40,7 +40,7 @@ void exit_shell(char **tokenized_command)
 	}
 	else if (num_token == 2)
 	{
-		arg = string_to_integer(tokenized_command[1]);
+		arg = _atoi(tokenized_command[1]);
 		if (arg == -1)
 		{
 			print(shell_name, STDERR_FILENO);
